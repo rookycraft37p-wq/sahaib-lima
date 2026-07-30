@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطعم سحائب ليما | Sahaib Lima Restaurant</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d47a1; /* أزرق بحري */
+            --secondary-color: #d4af37; /* ذهبي / بيج دافئ */
+            --dark-color: #1a252f;
+            --light-color: #f8f9fa;
+            --white: #ffffff;
+            --font-main: 'Tajawal', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: var(--dark-color);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--secondary-color);
+        }
+
+        .lang-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .lang-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(13, 71, 161, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            max-width: 600px;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Sections General */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            display: block;
+            margin: 10px auto 0;
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-card-body {
+            padding: 20px;
+        }
+
+        .menu-card-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-card-title h3 {
+            font-size: 1.2rem;
+        }
+
+        .price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .menu-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .btn-order {
+            width: 100%;
+            background-color: #25D366; /* WhatsApp Green */
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-order:hover {
+            background-color: #1eb954;
+        }
+
+        /* About & Info */
+        .info-box {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .info-box i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-utensils"></i>
+                <span id="logo-text">مطعم سحائب ليما</span>
+            </div>
+            <button class="lang-btn" onclick="toggleLanguage()" id="lang-btn">English</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 id="hero-title">طعم الأصالة في قلب مسندم</h1>
+        <p id="hero-desc">أشهى المأكولات البحرية الطازجة والأطباق العُمانية الأصيلة في نيابة ليما</p>
+        <a href="#menu" class="btn-primary" id="hero-btn">تصفح قائمة الطعام</a>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="container" id="menu">
+        <h2 class="section-title" id="menu-title">قائمة الطعام</h2>
+        <div class="menu-grid">
+            
+            <!-- Item 1 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" alt="سمك طازج">
+                <div class="menu-card-body">
+                    <div class="menu-card-title">
+                        <h3 class="item-1-title">سمك مشوي طازج</h3>
+                        <span class="price">4.500 OMR</span>
+                    </div>
+                    <p class="item-1-desc">سمك من بحر ليما طازج مشوي على الفحم مع البهارات العُمانية.</p>
+                    <a href="https://wa.me/96800000000?text=أود%20طلب:%20سمك%20مشوي%20طازج" target="_blank" class="btn-order">
+                        <i class="fa-brands fa-whatsapp"></i> <span class="order-text">اطلب عبر واتساب</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80" alt="مكبوس">
+                <div class="menu-card-body">
+                    <div class="menu-card-title">
+                        <h3 class="item-2-title">مكبوس لحم عُماني</h3>
+                        <span class="price">3.800 OMR</span>
+                    </div>
+                    <p class="item-2-desc">أرز مكبوس مطبوخ مع اللحم والبهارات العُمانية الخاصة.</p>
+                    <a href="https://wa.me/96800000000?text=أود%20طلب:%20مكبوس%20لحم%20عُماني" target="_blank" class="btn-order">
+                        <i class="fa-brands fa-whatsapp"></i> <span class="order-text">اطلب عبر واتساب</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="مشاوي">
+                <div class="menu-card-body">
+                    <div class="menu-card-title">
+                        <h3 class="item-3-title">مشاوي مشكلة</h3>
+                        <span class="price">3.500 OMR</span>
+                    </div>
+                    <p class="item-3-desc">تشكيلة من كباب اللحم، الشيش طاووق، وقطع اللحم المشوية.</p>
+                    <a href="https://wa.me/96800000000?text=أود%20طلب:%20مشاوي%20مشكلة" target="_blank" class="btn-order">
+                        <i class="fa-brands fa-whatsapp"></i> <span class="order-text">اطلب عبر واتساب</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Location & Info -->
+    <section class="container">
+        <div class="info-box">
+            <i class="fa-solid fa-location-dot"></i>
+            <h3 id="loc-title">موقعنا</h3>
+            <p id="loc-desc">سلطنة عُمان - محافظة مسندم - نيابة ليما</p>
+            <br>
+            <i class="fa-solid fa-clock"></i>
+            <h3 id="time-title">أوقات العمل</h3>
+            <p id="time-desc">يومياً: 8:00 صباحاً - 11:00 مساءً</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 مطعم سحائب ليما - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- JavaScript For Language Toggle -->
+    <script>
+        let currentLang = 'ar';
+
+        const translations = {
+            ar: {
+                logo: "مطعم سحائب ليما",
+                langBtn: "English",
+                heroTitle: "طعم الأصالة في قلب مسندم",
+                heroDesc: "أشهى المأكولات البحرية الطازجة والأطباق العُمانية الأصيلة في نيابة ليما",
+                heroBtn: "تصفح قائمة الطعام",
+                menuTitle: "قائمة الطعام",
+                orderText: "اطلب عبر واتساب",
+                locTitle: "موقعنا",
+                locDesc: "سلطنة عُمان - محافظة مسندم - نيابة ليما",
+                timeTitle: "أوقات العمل",
+                timeDesc: "يومياً: 8:00 صباحاً - 11:00 مساءً",
+                item1Title: "سمك مشوي طازج",
+                item1Desc: "سمك من بحر ليما طازج مشوي على الفحم مع البهارات العُمانية.",
+                item2Title: "مكبوس لحم عُماني",
+                item2Desc: "أرز مكبوس مطبوخ مع اللحم والبهارات العُمانية الخاصة.",
+                item3Title: "مشاوي مشكلة",
+                item3Desc: "تشكيلة من كباب اللحم، الشيش طاووق، وقطع اللحم المشوية."
+            },
+            en: {
+                logo: "Sahaib Lima Restaurant",
+                langBtn: "عربي",
+                heroTitle: "Authentic Taste in Musandam",
+                heroDesc: "Fresh seafood & authentic Omani dishes in Lima",
+                heroBtn: "View Menu",
+                menuTitle: "Our Menu",
+                orderText: "Order via WhatsApp",
+                locTitle: "Location",
+                locDesc: "Sultanate of Oman - Musandam - Lima",
+                timeTitle: "Working Hours",
+                timeDesc: "Daily: 8:00 AM - 11:00 PM",
+                item1Title: "Fresh Grilled Fish",
+                item1Desc: "Fresh local fish grilled over charcoal with traditional Omani spices.",
+                item2Title: "Omani Meat Majboos",
+                item2Desc: "Traditional spiced rice served with tender meat.",
+                item3Title: "Mixed Grills",
+                item3Desc: "A delicious platter of beef kebab, shish tawook, and grilled meat chunks."
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            
+            // Set Direction & Language
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+
+            // Update Text Content
+            document.getElementById('logo-text').innerText = translations[currentLang].logo;
+            document.getElementById('lang-btn').innerText = translations[currentLang].langBtn;
+            document.getElementById('hero-title').innerText = translations[currentLang].heroTitle;
+            document.getElementById('hero-desc').innerText = translations[currentLang].heroDesc;
+            document.getElementById('hero-btn').innerText = translations[currentLang].heroBtn;
+            document.getElementById('menu-title').innerText = translations[currentLang].menuTitle;
+            document.getElementById('loc-title').innerText = translations[currentLang].locTitle;
+            document.getElementById('loc-desc').innerText = translations[currentLang].locDesc;
+            document.getElementById('time-title').innerText = translations[currentLang].timeTitle;
+            document.getElementById('time-desc').innerText = translations[currentLang].timeDesc;
+
+            document.querySelector('.item-1-title').innerText = translations[currentLang].item1Title;
+            document.querySelector('.item-1-desc').innerText = translations[currentLang].item1Desc;
+            document.querySelector('.item-2-title').innerText = translations[currentLang].item2Title;
+            document.querySelector('.item-2-desc').innerText = translations[currentLang].item2Desc;
+            document.querySelector('.item-3-title').innerText = translations[currentLang].item3Title;
+            document.querySelector('.item-3-desc').innerText = translations[currentLang].item3Desc;
+
+            document.querySelectorAll('.order-text').forEach(el => {
+                el.innerText = translations[currentLang].orderText;
+            });
+        }
+    </script>
+</body>
+</html>
